@@ -12,7 +12,7 @@ interface ApiService {
         fun getRandomTip(): Call<Tip>
 
         @POST("characters")
-        fun createCharacter(@Body request: CharacterRequest?): Call<CharacterResponse?>?
+        fun getPlayerData(@Body requestBody: Map<String, String>): Call<PlayerResponse>
 
         @GET("/scores")
         fun getScores(): Call<ScoreResponse>

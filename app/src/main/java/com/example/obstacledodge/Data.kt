@@ -25,27 +25,38 @@ data class Leaderboard(
     val score: Int
 )
 
-class Character {
-    @SerializedName("name")
-    val name: String? = null
+//class Character {
+//    @SerializedName("name")
+//    val name: String? = null
+//
+//    @SerializedName("description")
+//    val description: String? = null
+//
+//    @SerializedName("type")
+//    val type: String? = null
+//
+//    @SerializedName("imageUrl")
+//    val imageUrl: String? = null
+//}
+//
+//class CharacterRequest(
+//    @field:SerializedName("type")
+//    val type: Int
+//    )
 
-    @SerializedName("description")
-    val description: String? = null
+data class Player(
+    val name: String,
+    val description: String,
+    val type: String,
+    val imageUrl: String
+)
 
-    @SerializedName("type")
-    val type: String? = null
+data class PlayerResponse(
+    val characters: List<Player>
+)
 
-    @SerializedName("imageUrl")
-    val imageUrl: String? = null
-}
-
-class CharacterRequest(
-    @field:SerializedName("type")
-    val type: Int
-    )
-
-class CharacterResponse {
-    @SerializedName("characters")
-    val characters: ArrayList<Character>? = null
-}
+//class CharacterResponse {
+//    @SerializedName("characters")
+//    val characters: ArrayList<Character>? = null
+//}
 
