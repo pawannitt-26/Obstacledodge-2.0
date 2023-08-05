@@ -15,8 +15,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.math.sin
 import kotlin.random.Random
 
@@ -61,7 +59,6 @@ class MainActivity : AppCompatActivity() {
         private var cloud1Bitmap: Bitmap? = null
         private var cloud2Bitmap: Bitmap? = null
         private var cloud3Bitmap: Bitmap? = null
-
         private var chaserBitmap: Bitmap? = null
         private var grass1Bitmap: Bitmap? = null
         private var grass2Bitmap: Bitmap? = null
@@ -267,11 +264,13 @@ class MainActivity : AppCompatActivity() {
 
 
             // Draw the chaser rectangle
-            val chaserRect = Rect(chaserX.toInt(), chaserY, (chaserX + CHASER_SIZE).toInt(), chaserY + CHASER_SIZE)
-            val chaserPaint = Paint().apply {
-                color = Color.TRANSPARENT
-            }
-            canvas.drawRect(chaserRect, chaserPaint)
+//            val chaserRect = Rect(chaserX.toInt(), chaserY, (chaserX + CHASER_SIZE).toInt(), chaserY + CHASER_SIZE)
+//            val chaserPaint = Paint().apply {
+//                color = Color.TRANSPARENT
+//            }
+//            canvas.drawRect(chaserRect, chaserPaint)
+
+
             // Draw the chaser bitmap
             chaserBitmap?.let {
                 val chaserBitmapRect =
@@ -288,13 +287,15 @@ class MainActivity : AppCompatActivity() {
             for (obstacle in obstacleList) {
 
                 //Draw obstacle rectangle
-                val obstacleRect = Rect(obstacle.x, obstacleY, obstacle.x + OBSTACLE_SIZE,obstacleY + OBSTACLE_SIZE)
-                val obstaclePaint = Paint().apply {
-                    color = Color.TRANSPARENT
-                }
-                canvas.drawRect(obstacleRect, obstaclePaint)
+//                val obstacleRect = Rect(obstacle.x, obstacleY, obstacle.x + OBSTACLE_SIZE,obstacleY + OBSTACLE_SIZE)
+//                val obstaclePaint = Paint().apply {
+//                    color = Color.TRANSPARENT
+//                }
+//                canvas.drawRect(obstacleRect, obstaclePaint)
+
+
                 // Draw the obstacle bitmap
-                obstacle.bitmap?.let {
+                obstacle.bitmap.let {
                     val obstacleBitmapRect = Rect(obstacle.x, obstacleY, obstacle.x + OBSTACLE_SIZE, obstacleY + OBSTACLE_SIZE)
                     canvas.drawBitmap(it, null, obstacleBitmapRect, null)
                 }
@@ -322,7 +323,7 @@ class MainActivity : AppCompatActivity() {
             if (score>3000f && score<3500f){
                 letter = randomLetterList?.get(4)
                 canvas.drawText(letter.toString(), randomX.toFloat(), randomY, textPaint)
-                Toast.makeText(context, "you got additiona 400 credit", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "you got additional 400 credit", Toast.LENGTH_SHORT).show()
             }
 
 
@@ -372,7 +373,7 @@ class MainActivity : AppCompatActivity() {
 
             //draw the cloud Bitmap
             for (cloud in cloudList){
-                cloud.cloudbitmap?.let {
+                cloud.cloudbitmap.let {
                     val cloudBitmapRect =  Rect(cloud.x, -30, cloud.x+500, 200)
                     canvas.drawBitmap(it,null,cloudBitmapRect,null)
 

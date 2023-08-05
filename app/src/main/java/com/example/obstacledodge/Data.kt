@@ -7,14 +7,6 @@ data class Tip(
     val tip: String
 )
 
-//data class Character(
-//    val id: Int,
-//    val name: String,
-//    val description: String,
-//    val image: String
-//)
-
-
 data class ScoreResponse(
     val scores: List<Score>
 )

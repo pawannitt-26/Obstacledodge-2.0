@@ -21,7 +21,7 @@ class MainActivity2 : AppCompatActivity() {
         val splashDurationMillis = 3000L
         val tipText = findViewById<TextView>(R.id.tip)
         tipText.text=""
-        var message = ""
+        var message: String
 
         hideStatusBar()
 

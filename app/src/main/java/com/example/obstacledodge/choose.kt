@@ -1,7 +1,6 @@
 package com.example.obstacledodge
 
 import android.R.attr.type
-import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -13,16 +12,15 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.example.obstacledodge.MainActivity.JumpingGameView.Companion.playerBitmap
 import com.example.obstacledodge.MainActivity.JumpingGameView.Companion.playername
+import com.example.obstacledodge.MainActivity.JumpingGameView.Companion.randomLetterList
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.lang.String
 import kotlin.Throwable
 import kotlin.toString
 
@@ -92,17 +90,16 @@ class choose : AppCompatActivity() {
 
         val apiService: ApiService = retrofit.create(ApiService::class.java)
 
-        // Example: Fetch a random word of a specific length
+        // Fetch a random word of a specific length
         apiService.getRandomWord(5).enqueue(object : Callback<Word> {
             override fun onResponse(call: Call<Word>, response: Response<Word>) {
                 if (response.isSuccessful) {
                     val word: Word? = response.body()
-                    MainActivity.JumpingGameView.randomWord =word.toString()
-                    // Extract the substring using a regular expression
-                    val pattern = Regex("word=([A-Z]+)")
-                    val matchResult = pattern.find(MainActivity.JumpingGameView.randomWord.toString())
-                    MainActivity.JumpingGameView.randomWord = matchResult?.groupValues?.get(1)
-                    MainActivity.JumpingGameView.randomLetterList = MainActivity.JumpingGameView.randomWord?.toList()
+                    val reqWord= word?.word
+                    if (reqWord != null) {
+                        randomLetterList=reqWord.toList()
+                    }
+
                 } else {
                     // Handle the API error
                 }

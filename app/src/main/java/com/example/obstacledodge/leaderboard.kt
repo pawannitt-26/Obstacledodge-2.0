@@ -92,6 +92,7 @@ class leaderboard : AppCompatActivity() {
                         }
                         scoreList.add(Leaderboard(playername,(score/100).toInt()))
                         scoreList.sortByDescending { it.score }
+                        adapter.notifyDataSetChanged()
                     } else {
                         // Handle API error
                     }
